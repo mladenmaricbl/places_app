@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:places_app/screens/add_place_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'package:places_app/providers/places_provider.dart';
 import 'package:places_app/screens/places_screen.dart';
 
 
@@ -10,32 +14,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider.value(
+      value: PlacesProvider(),
+      child: MaterialApp(
+        title: 'Places App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: PlacesScreen(),
+        routes: {
+          AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+        }
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Places App'),
-      ),
-      body: PlacesScreen(),
     );
   }
 }
