@@ -13,7 +13,7 @@ class PlacesScreen extends StatelessWidget {
           IconButton(
             onPressed: (){
               Navigator.of(context)
-                  .pushReplacementNamed(AddPlaceScreen.routeName);
+                  .pushNamed(AddPlaceScreen.routeName);
             },
             icon: Icon(Icons.add),
           )
